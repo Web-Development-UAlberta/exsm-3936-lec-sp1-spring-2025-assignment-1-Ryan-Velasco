@@ -6,7 +6,7 @@ async function main() {
       this.engineRunning = false;
     }
   }
-  //Second class (car) - make, model, year, odometer, engine (instance of engine class), include method to start/stop car and drive
+  //Second class (car) - make, model, year, odometer, engine (instance of engine class), include method to start/stop car and drive (count km driven)
   class Car {
     constructor(make, model, year, engineCylinders) {
       this.make = make;
@@ -32,5 +32,21 @@ async function main() {
       this.odometer += distance;
     }
   }
+  //Script as per assignment instructions
+  const myCar = new Car("Hyundai", "Elantra", 2013, 4);
 
+  try {
+    myCar.startEngine();
+    myCar.drive(100);
+    myCar.stopEngine();
+
+    myCar.startEngine();
+    myCar.drive(50);
+    myCar.stopEngine();
+
+    output(`Odometer: ${myCar.odometer} km`);
+    output(JSON.stringify(myCar));
+  } catch (e) {
+    output(e.message);
+  }
 }
