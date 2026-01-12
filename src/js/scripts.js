@@ -1,14 +1,52 @@
-// eslint-disable-next-line no-unused-vars
-/* global output, input */
-// eslint-disable-next-line no-unused-vars
 async function main() {
-  // This is where the code you're actually experimenting with goes.
+  //First class (engine) - number of cylinders and whether it is running or not (start at false)
+  class Engine {
+    constructor(cylinders) {
+      this.cylinders = cylinders;
+      this.engineRunning = false;
+    }
+  }
+  //Second class (car) - make, model, year, odometer, engine (instance of engine class), include method to start/stop car and drive (count km driven)
+  class Car {
+    constructor(make, model, year, engineCylinders) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+      this.odometer = 0; //Always starts at zero
+      this.engine = new Engine(engineCylinders);
+    }
 
-  const prompt = "Please enter your name, or 'Exit' to quit: ";
-  let name = await input(prompt);
+    startEngine() {
+      this.engine.engineRunning = true;
+    }
 
-  while (name !== "Exit") {
-    output("Hello, " + name + "!");
-    name = await input(prompt);
+    stopEngine() {
+      this.engine.engineRunning = false;
+    }
+
+    drive(distance) {
+      if(!this.engine.engineRunning) {
+        throw new Error("ERROR: Cannot drive car while the engine is turned off.");
+      }
+
+      this.odometer += distance;
+    }
+  }
+  //Script as per assignment instructions
+  const myCar = new Car("Hyundai", "Elantra", 2013, 4);
+
+  try {
+    myCar.startEngine();
+    myCar.drive(100);
+    myCar.stopEngine();
+
+    myCar.startEngine();
+    myCar.drive(50);
+    myCar.stopEngine();
+
+    output(`Odometer: ${myCar.odometer} km`);
+    output(JSON.stringify(myCar));
+  } catch (e) {
+    output(e.message);
   }
 }

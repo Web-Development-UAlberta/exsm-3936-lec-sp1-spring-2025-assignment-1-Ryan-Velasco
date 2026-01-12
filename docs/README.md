@@ -1,10 +1,17 @@
-# University of Alberta Browser Console Template Repository
-## Full Stack Web Application Development Program
-### This repository is intended for the development of console JavaScript applications.
+# EXSM 3936 Assignment 1
+## Ryan Velasco
+### UAlberta
 
-Run `npm run lint` to attempt to detect errors in your repository.
+This JavaScript assignment contains two classes that shallowly simulate a car and its engine. Both classes have their own constuctors, the car odometer always initializes
+at zero, and the engine's running property always initalizes to false. The properties of the car class include its make, model, year, odometer, and engine. The engine
+property will be an instance of the engine class. The methods of the car class include a method to start the car engine which will set the engine to running, stop the car engine which will set the engine to not running, and drive the car which will add the argument to the odometer if the engine is on and throw an exception otherwise. 
 
-Use `output()` and `await input()` from `./src/js/scripts.js` to allow the user to interact with the console.
-To run the console, launch `./src/index.html`.
-
-Add your README content here.
+The script runs the following: 
+Instantiate a car.
+Turn its engine on.
+Drive for 100km.
+Turn the engine off.
+Turn its engine on.
+Drive for 50km.
+Turn the engine off.
+Output the odometer reading to the console.
